@@ -1,3 +1,15 @@
+/**
+ * @author1 de Mora Perez, Jaime
+ * @expediente1 22175478
+ *
+ * @author2 Moreno Gonzalez, Santiago
+ * @expediente2 22155937
+ *
+ * @date 2024-05-26
+ * @version 0.1
+ */
+
+
 public class TestCiclicidad <Clave, InfoVertice, Coste >{
   
     public boolean testCiclos (Grafo<Clave, InfoVertice, Coste> g){
@@ -18,7 +30,7 @@ public class TestCiclicidad <Clave, InfoVertice, Coste >{
         return ciclo;
     }
 
-    public boolean testCicloNodo(Grafo<Clave, InfoVertice, Coste> g, Clave nodoInicio, Clave nodoActual, Lista<Clave> nodosVisitados){
+    private boolean testCicloNodo(Grafo<Clave, InfoVertice, Coste> g, Clave nodoInicio, Clave nodoActual, Lista<Clave> nodosVisitados){
         if(nodoInicio.equals(nodoActual) && nodosVisitados.longitud() > 0) return true; // Si he llegado al mismo y la lista de visitados tiene elementos
         if(g.listaSucesores(nodoInicio).longitud() == 0 || g.listaPredecesores(nodoInicio).longitud() == 0) { //NODO AISLADO
             return false;
@@ -48,6 +60,7 @@ public class TestCiclicidad <Clave, InfoVertice, Coste >{
         //gPrueba.insertarArista("B", "A", 1);
         gPrueba.insertarArista("C", "B", 1);
 
+
         Grafo <String, String, Integer> ggPrueba = new Grafo<String, String, Integer>();
 		
         ggPrueba.insertarVertice("A", "A");
@@ -76,14 +89,14 @@ public class TestCiclicidad <Clave, InfoVertice, Coste >{
         g2.insertarArista("A", "B", 1);
         g2.insertarArista("B", "A", 1);
 
-        // Grafo 3: Un ciclo con un vértice adicional sin ciclos
+        // Grafo 3: Dos ciclos
         Grafo<String, String, Integer> g3 = new Grafo<>();
         g3.insertarVertice("A", "A");
         g3.insertarVertice("B", "B");
         g3.insertarVertice("C", "C");
-        g3.insertarArista("A", "B", 1);
+        g3.insertarArista("A", "C", 1);
         g3.insertarArista("B", "A", 1);
-        g3.insertarArista("C", "A", 1);
+        g3.insertarArista("C", "B", 1);
 
         // Grafo 4: Dos ciclos separados
         Grafo<String, String, Integer> g4 = new Grafo<>();
